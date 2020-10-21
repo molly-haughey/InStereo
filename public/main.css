@@ -1,0 +1,10 @@
+body {
+    background-color: #F4F1DE;
+}
+
+.header {
+    background-image: url("https://i.imgur.com/ciUW5aN.png");
+    float: left;
+    background-size: auto;
+    margin: 0;
+}

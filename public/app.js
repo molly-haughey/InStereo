@@ -9,98 +9,125 @@ class App extends React.Component {
       }
 
     componentDidMount = () => {
-        fetch("http://api.discogs.com/release/465740")
+        fetch("https://api.discogs.com/artists/1")
         .then(res => res.json())
         .then(
           (result) => {
             this.setState({
               isLoaded: true,
-              items: result.items
+              vinyls: result.vinyls
             });
           },
+          (error) => {
+            this.setState({
+              isLoaded: true,
+              error
+            });
+          }
+        )
+    }
 
     createVinyl = (event) => {
         event.preventDefault();
         axios.post(
             '/vinyls',
             {
-                name:this.state.newVinylName,
-                img:this.state.newVinylImg,
+                album:this.state.newVinylAlbum,
+                artist:this.state.newVinylArtist,
             }
         ).then(
             (response) => {
                 this.setState({
-                    people:response.data
+                    vinyls:response.data
                 })
             }
         )
     }
 
-    changeNewPersonAge = (event) => {
+    changeNewVinylAlbum = (event) => {
         this.setState({
-            newPersonAge:event.target.value
+            newVinylAlbum:event.target.value
         });
     }
 
-    changeNewPersonName = (event) => {
+    changeNewVinylArtist = (event) => {
         this.setState({
-            newPersonName:event.target.value
+            newVinylArtist:event.target.value
         });
     }
 
-    deletePerson = (event) => {
-        axios.delete('/people/' + event.target.value).then(
+    deleteVinyl = (event) => {
+        axios.delete('/vinyls/' + event.target.value).then(
             (response) => {
                 this.setState({
-                    people:response.data
+                    vinyls:response.data
                 })
             }
         )
 
     }
 
-    updatePerson = (event) => {
+    updateVinyl = (event) => {
         event.preventDefault();
         const id = event.target.getAttribute('id');
         axios.put(
-            '/people/' + id,
+            '/vinyls/' + id,
             {
-                name:this.state.updatePersonName,
-                age:this.state.updatePersonAge,
+                album:this.state.updateVinylAlbum,
+                artist:this.state.updateVinylArtist,
             }
         ).then(
             (response) => {
                 this.setState({
-                    people:response.data,
-                    name:'',
-                    age:null,
+                    vinyls:response.data,
+                    album:'',
+                    artist:'',
                 })
             }
         )
     }
 
-    changeUpdatePersonName = (event) => {
+    changeUpdateVinylAlbum = (event) => {
         this.setState(
             {
-                updatePersonName:event.target.value
+                updateVinylAlbum:event.target.value
             }
         )
     }
 
-    changeUpdatePersonAge = (event) => {
+    changeUpdateVinylArtist = (event) => {
         this.setState(
             {
-                updatePersonAge:event.target.value
+                updateVinylArtist:event.target.value
             }
         )
     }
 
     render = () => {
-        return <div>
-            
-        </div>
+        const { error, isLoaded, vinyls } = this.state;
+        if (error) {
+          return <div>Error: {error.message}</div>;
+        } else if (!isLoaded) {
+          return <div>Loading...</div>;
+        } else {
+          return (
+            <ul>
+              {vinyls.map(vinyls => (
+                <li key={vinyls.album}>
+                  {vinyls.album} {vinyls.artist}
+                </li>
+              ))}
+            </ul>
+          );
+        }
+      }
     }
-}
+    return <div>
+        <div className="header">
+        </div> 
+        </div>
+        
+        
 
 ReactDOM.render(
     <App></App>,
