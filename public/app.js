@@ -1,25 +1,31 @@
 class App extends React.Component {
-    state = {
-        people:[]
-    }
+    constructor(props) {
+        super(props);
+        this.state = {
+          error: null,
+          isLoaded: false,
+          vinyls: []
+        };
+      }
 
     componentDidMount = () => {
-        axios.get('/people').then(
-            (response) => {
-                this.setState({
-                    people:response.data
-                })
-            }
-        )
-    }
+        fetch("http://api.discogs.com/release/465740")
+        .then(res => res.json())
+        .then(
+          (result) => {
+            this.setState({
+              isLoaded: true,
+              items: result.items
+            });
+          },
 
-    createPerson = (event) => {
+    createVinyl = (event) => {
         event.preventDefault();
         axios.post(
-            '/people',
+            '/vinyls',
             {
-                name:this.state.newPersonName,
-                age:this.state.newPersonAge,
+                name:this.state.newVinylName,
+                img:this.state.newVinylImg,
             }
         ).then(
             (response) => {
@@ -91,33 +97,7 @@ class App extends React.Component {
 
     render = () => {
         return <div>
-            <h2>Create Person</h2>
-            <form onSubmit={this.createPerson}>
-                <input onKeyUp={this.changeNewPersonName} type="text" placeholder="name" /><br/>
-                <input onKeyUp={this.changeNewPersonAge} type="number" placeholder="age" /><br/>
-                <input type="submit" value="Create Person" />
-            </form>
-            <h2>List of People</h2>
-            <ul>
-                {
-                    this.state.people.map(
-                        (person, index) => {
-                            return <li key={index}>
-
-                                {person.name}: {person.age}
-
-                                <button value={person.id} onClick={this.deletePerson}>DELETE</button>
-
-                                <form id={person.id} onSubmit={this.updatePerson}>
-                                    <input onKeyUp={this.changeUpdatePersonName} type="text" placeholder="name"/><br/>
-                                    <input onKeyUp={this.changeUpdatePersonAge} type="number" placeholder="age"/><br/>
-                                    <input type="submit" value="Update Person"/>
-                                </form>
-                            </li>
-                        }
-                    )
-                }
-            </ul>
+            
         </div>
     }
 }
