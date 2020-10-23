@@ -1,15 +1,43 @@
-class App extends React.Component {
+class Vinyl extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
           error: null,
           isLoaded: false,
           vinyls: []
-        };
+        }
       }
-
-    componentDidMount = () => {
-        fetch("https://api.discogs.com/artists/1")
+      handleChange = event => {
+        this.setState({ inputValue: event.target.value })
+      }
+      handleSubmit = event => {
+        event.preventDefault()
+        axios
+        
+          .post('/vinyls', this.state)
+          .then(response => this.setState(
+            { type: '',
+              title: '',
+              release_title: '',
+              credit: '',
+              artist:'',
+              anv: '',
+              label: '',
+              genre: '',
+              style: '',
+              country: '',
+              year: '',
+              format: '',
+              catno: '',
+              barcode: '',
+              track: '',
+              submitter: '',
+              contributor: '',
+              vinyls: response.data
+            })
+          )
+      
+          fetch(`https://api.discogs.com/database/search?q={this.state.input}&{?type,title,release_title,credit,artist,anv,label,genre,style,country,year,format,catno,barcode,track,submitter,contributor}`)
         .then(res => res.json())
         .then(
           (result) => {
@@ -25,6 +53,55 @@ class App extends React.Component {
             });
           }
         )
+    }
+
+        render = () => {
+        const { error, isLoaded, vinyls } = this.state;
+         if (error) {
+          return <div>Error: {error.message}</div>;
+        } else if (!isLoaded) {
+          return <div>Loading...</div>;
+        } else {
+          return (
+            <ul>
+              {vinyls.map(vinyls => (
+                <li key={response}>
+                  {vinyls.type} {vinyls.title} {vinyls.release_title} {vinyls.credit} {vinyls.artist} {vinyls.any} {vinyls.label} {vinyls.genre} {vinyls.style} {vinyls.country} {vinyls.year} {vinyls.format} {vinyls.catno} {vinyls.barcode} {vinyls.track} {vinyls.submitter} {vinyls.contributor}
+                </li>
+              ))}
+            </ul>
+            
+          );
+    
+        }
+      }
+    }
+
+class Header extends React.Component {
+    render = () => {
+        return(
+         <div>
+            <div className="header">
+            </div> 
+            </div>
+        )
+      }
+}
+
+class App extends React.Component {
+        state = {
+            vinyls:{}
+        }
+    
+
+    componentDidMount = () => {
+        axios
+        .get('/vinyls')
+        .then((response) => {
+          this.setState({
+            vinyls: response.data
+          })
+        })
     }
 
     createVinyl = (event) => {
@@ -102,31 +179,8 @@ class App extends React.Component {
             }
         )
     }
-
-    render = () => {
-        const { error, isLoaded, vinyls } = this.state;
-        if (error) {
-          return <div>Error: {error.message}</div>;
-        } else if (!isLoaded) {
-          return <div>Loading...</div>;
-        } else {
-          return (
-            <ul>
-              {vinyls.map(vinyls => (
-                <li key={vinyls.album}>
-                  {vinyls.album} {vinyls.artist}
-                </li>
-              ))}
-            </ul>
-          );
-        }
-      }
-    }
-    return <div>
-        <div className="header">
-        </div> 
-        </div>
-        
+}
+    
         
 
 ReactDOM.render(

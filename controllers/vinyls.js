@@ -3,13 +3,13 @@ const router = express.Router();
 const postgres = require('../postgres.js');
 
 router.get('/', (req, res) => {
-    postgres.query('SELECT * FROM people ORDER BY id ASC;', (err, results) => {
+    postgres.query('SELECT * FROM vinyls ORDER BY id ASC;', (err, results) => {
         res.json(results.rows)
     });
 });
 
 router.post('/', (req, res) => {
-    postgres.query(`INSERT INTO people (name, age) VALUES ('${req.body.name}', ${req.body.age})`, (err, results) => {
+    postgres.query(`INSERT INTO vinyls (name, age) VALUES ('${req.body.name}', ${req.body.age})`, (err, results) => {
         postgres.query('SELECT * FROM people ORDER BY id ASC;', (err, results) => {
             res.json(results.rows)
         });
