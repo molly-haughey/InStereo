@@ -66,7 +66,7 @@ class Vinyl extends React.Component {
             <ul>
               {vinyls.map(vinyls => (
                 <li key={response}>
-                  {vinyls.type} {vinyls.title} {vinyls.release_title} {vinyls.credit} {vinyls.artist} {vinyls.any} {vinyls.label} {vinyls.genre} {vinyls.style} {vinyls.country} {vinyls.year} {vinyls.format} {vinyls.catno} {vinyls.barcode} {vinyls.track} {vinyls.submitter} {vinyls.contributor}
+                  <img src="{vinyls.img}"/> {vinyls.type} {vinyls.title} {vinyls.release_title} {vinyls.credit} {vinyls.artist} {vinyls.any} {vinyls.label} {vinyls.genre} {vinyls.style} {vinyls.country} {vinyls.year} {vinyls.format} {vinyls.catno} {vinyls.barcode} {vinyls.track} {vinyls.submitter} {vinyls.contributor}
                 </li>
               ))}
             </ul>
@@ -134,7 +134,7 @@ class App extends React.Component {
     }
 
     deleteVinyl = (event) => {
-        axios.delete('/vinyls/' + event.target.value).then(
+        axios.delete('/vinyls' + event.target.value).then(
             (response) => {
                 this.setState({
                     vinyls:response.data
