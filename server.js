@@ -5,8 +5,8 @@ const postgres = require('./postgres.js');
 app.use(express.json());
 app.use(express.static('public'))
 
-const peopleController = require('./controllers/vinyls.js');
-app.use('/vinyls', peopleController);
+const vinylsController = require('./controllers/vinyls.js');
+app.use('/vinyls', vinylsController);
 
 postgres.connect();
 

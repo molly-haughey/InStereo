@@ -148,7 +148,7 @@ class App extends React.Component {
         event.preventDefault();
         const id = event.target.getAttribute('id');
         axios.put(
-            '/vinyls/' + id,
+            '/vinyls' + id,
             {
                 album:this.state.updateVinylAlbum,
                 artist:this.state.updateVinylArtist,
@@ -179,7 +179,14 @@ class App extends React.Component {
             }
         )
     }
+    render = () => {
+      return(
+        <div className="header">
+        </div> 
+      )
+    }
 }
+
     
         
 
