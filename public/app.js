@@ -1,12 +1,10 @@
-const { response } = require("express");
-
 class Vinyl extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
           error: null,
           isLoaded: false,
-          vinyls: []
+          vinyls: {}
         }
       }
       handleChange = event => {
@@ -68,22 +66,20 @@ class Vinyl extends React.Component {
     }
 
 class Picks extends React.Component {
-  constructor(props) {
-    super(props);
     state = {
-    vinyls: response.data
+    vinyls: []
     }
-  }
+  
     render = () => { 
         return (
             <div>
               <h2>Staff Picks</h2>
             <ul>
-              {vinyls.map(vinyls => (
-                <li key={response}>
+              {this.state.vinyls.map((vinyls) => {
+                <li>
                   <img src="{vinyls.img}"/> {vinyls.type} {vinyls.title} {vinyls.release_title} {vinyls.credit} {vinyls.artist} {vinyls.any} {vinyls.label} {vinyls.genre} {vinyls.style} {vinyls.country} {vinyls.year} {vinyls.format} {vinyls.catno} {vinyls.barcode} {vinyls.track} {vinyls.submitter} {vinyls.contributor}
                 </li>
-              ),
+              }
               )
               }
               </ul>
