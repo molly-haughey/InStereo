@@ -91,11 +91,11 @@ class Picks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      vinyls: '',
+      vinyls: [],
     }
   }
   componentDidMount() {
-    fetch('https://localhost:3000/vinyls')
+    fetch('/vinyls')
       .then(response => response.json())
       .then(vinyls => this.setState({vinyls}))
   }
@@ -106,9 +106,11 @@ class Picks extends React.Component {
               <h1>Staff Picks</h1>
             <div>
               {this.state.vinyls.map((vinyl) => {
-                
-                  <img src="{vinyl.img}"/>;{vinyl.type} {vinyl.title} {vinyl.release_title} {vinyl.credit} {vinyl.artist} {vinyl.any} {vinyl.label} {vinyl.genre} {vinyl.style} {vinyl.country} {vinyl.year} {vinyl.format} {vinyl.catno} {vinyl.barcode} {vinyl.track} {vinyl.submitter} {vinyl.contributor}
-              
+                return (
+                <div>
+                  <img src={vinyl.img}/><br/>Vinyl Type: {vinyl.type} <br/> Release Title: {vinyl.title} <br/> Album Title: {vinyl.release_title} <br/>Credits: {vinyl.credit} <br/> Artist: {vinyl.artist} <br/> Alternate Artist Names: {vinyl.anv} <br/> Label: {vinyl.label} <br/> Genre: {vinyl.genre} <br/> Style: {vinyl.style} <br/> Country: {vinyl.country} <br/> Year: {vinyl.year} <br/> Format: {vinyl.format} <br/> Catno: {vinyl.catno} <br/> Barcode: {vinyl.barcode} <br/> Tracks: {vinyl.track} <br/> Submitter: {vinyl.submitter} <br/> Contributor: {vinyl.contributor}
+              </div>
+                )
               }
               )
               }
