@@ -1,16 +1,24 @@
+// note: nirvana is hard-coded into fetch
+
 class Vinyl extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
           error: null,
           isLoaded: false,
-          vinyls: {}
+          vinyls: ''
         }
       }
+    
       handleChange = event => {
-        this.setState({ inputValue: event.target.value })
+        this.setState({ 
+        input: event.target.value })
       }
       handleSubmit = event => {
+        this.setState({
+          input: event.target.value
+        }) 
+        console.log(event)    
         event.preventDefault()
         axios
         
@@ -37,7 +45,8 @@ class Vinyl extends React.Component {
             })
           )
       
-          fetch(`https://api.discogs.com/database/search?q={this.state.input}&{?type,title,release_title,credit,artist,anv,label,genre,style,country,year,format,catno,barcode,track,submitter,contributor}`)
+      
+          fetch(`https://api.discogs.com/database/search?artist=nirvana`)
         .then(res => res.json())
         .then(
           (result) => {
@@ -53,17 +62,30 @@ class Vinyl extends React.Component {
             });
           }
         )
-    }
+        }
 
         render = () => {
-          const { error, isLoaded, vinyls } = this.state;
+          const { error } = this.state;
          if (error) {
-          return <div>Error: {error.message}</div>;
-        } else if (!isLoaded) {
-          return <div>Loading...</div>
+          return <div>Error: {error.message}</div>
+         }
+          return <div className="container">
+              <form onSubmit={this.handleSubmit}>
+                <label>
+                  Search:
+                  <input className="input" type="text" value={this.state.value} onChange={this.handleChange} />
+                </label>
+                <input className="button" type="submit" value="Submit" />
+              </form>
+              </div>
+              
         }
       }
-    }
+            
+          
+        
+    
+
 
 class Picks extends React.Component {
     state = {
@@ -73,16 +95,17 @@ class Picks extends React.Component {
     render = () => { 
         return (
             <div>
-              <h2>Staff Picks</h2>
-            <ul>
-              {this.state.vinyls.map((vinyls) => {
-                <li>
-                  <img src="{vinyls.img}"/> {vinyls.type} {vinyls.title} {vinyls.release_title} {vinyls.credit} {vinyls.artist} {vinyls.any} {vinyls.label} {vinyls.genre} {vinyls.style} {vinyls.country} {vinyls.year} {vinyls.format} {vinyls.catno} {vinyls.barcode} {vinyls.track} {vinyls.submitter} {vinyls.contributor}
-                </li>
+              <h1>Staff Picks</h1>
+            <div>
+              {this.state.vinyls.map((vinyl) => {
+                
+                  <img src="{vinyl.img}"/>;{vinyl.type} {vinyl.title} {vinyl.release_title} {vinyl.credit} {vinyl.artist} {vinyl.any} {vinyl.label} {vinyl.genre} {vinyl.style} {vinyl.country} {vinyl.year} {vinyl.format} {vinyl.catno} {vinyl.barcode} {vinyl.track} {vinyl.submitter} {vinyl.contributor}
+                
               }
               )
               }
-              </ul>
+              </div>
+              
               </div>
           )
             }
@@ -97,7 +120,7 @@ class Picks extends React.Component {
 class Header extends React.Component {
     render = () => {
         return(
-         <div>
+         <div className="header-0">
             <div className="header-1">
             </div> 
             </div>
@@ -105,38 +128,6 @@ class Header extends React.Component {
       }
 }
 
-class SearchForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: ''};
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    (this.state.value);
-    event.preventDefault();
-  }
-
-  render() {
-    return (
-      <div className="container">
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Search:
-          <input className="input" type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input className="button" type="submit" value="Submit" />
-      </form>
-      </div>
-    );
-  }
-}
 
 class App extends React.Component {
         state = {
@@ -232,7 +223,6 @@ class App extends React.Component {
     render = () => {
       return(<div>
         <Header></Header>
-        <SearchForm></SearchForm>
         <Picks></Picks>
         <Vinyl></Vinyl>        
         </div>

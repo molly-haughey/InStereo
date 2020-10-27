@@ -1,11 +1,17 @@
 body {
-    background-color: #e07a5f;
     text-align: center;
+    background-color: #f4f1de;
 }
 
+.header-0 {
+    background-color: #e07a5f;
+    width: 100%;
+    margin: 0 auto;
+}
 .header-1 {
     background-image: url("https://i.imgur.com/ciUW5aN.png");
     background-size: auto;
+    background-color: #e07a5f;
     height: 510px;
     width: 510px;
     margin: 0 auto;
@@ -35,4 +41,9 @@ input[type=text] {
 .container {
     display: flex;
     justify-content: center;
+}
+
+h1 {
+    font-size: 28px;
+    margin: 1em;
 }
