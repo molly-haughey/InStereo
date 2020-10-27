@@ -88,9 +88,17 @@ class Vinyl extends React.Component {
 
 
 class Picks extends React.Component {
-    state = {
-    vinyls: []
+  constructor(props) {
+    super(props);
+    this.state = {
+      vinyls: '',
     }
+  }
+  componentDidMount() {
+    fetch('https://localhost:3000/vinyls')
+      .then(response => response.json())
+      .then(vinyls => this.setState({vinyls}))
+  }
   
     render = () => { 
         return (
@@ -100,7 +108,7 @@ class Picks extends React.Component {
               {this.state.vinyls.map((vinyl) => {
                 
                   <img src="{vinyl.img}"/>;{vinyl.type} {vinyl.title} {vinyl.release_title} {vinyl.credit} {vinyl.artist} {vinyl.any} {vinyl.label} {vinyl.genre} {vinyl.style} {vinyl.country} {vinyl.year} {vinyl.format} {vinyl.catno} {vinyl.barcode} {vinyl.track} {vinyl.submitter} {vinyl.contributor}
-                
+              
               }
               )
               }
@@ -111,7 +119,17 @@ class Picks extends React.Component {
             }
             }
               
-    
+// class Login extends React.Component {
+//   HasAccessToRouter = () => {
+//     const history = useHistory(); 
+  
+//   customAuthHandler = () => {
+//       history.push('/login');
+//     };
+//   }
+//   render = () => {
+
+//   }
         
 
       
@@ -223,8 +241,8 @@ class App extends React.Component {
     render = () => {
       return(<div>
         <Header></Header>
-        <Picks></Picks>
-        <Vinyl></Vinyl>        
+        <Vinyl></Vinyl>  
+        <Picks></Picks>      
         </div>
       )
     }

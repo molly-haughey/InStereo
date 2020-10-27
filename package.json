@@ -17,7 +17,11 @@
   },
   "homepage": "https://github.com/molly-haughey/InStereo/blob/main/README.md",
   "dependencies": {
+    "@okta/okta-react": "^3.0.8",
     "express": "^4.17.1",
-    "pg": "^8.3.2"
+    "pg": "^8.3.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0"
   }
 }
