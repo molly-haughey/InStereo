@@ -1,8 +1,6 @@
 CREATE DATABASE shop;
 
-CREATE TABLE vinyls;
-
-CREATE TABLE vinyls ( img varchar (100), type varchar(100), title varchar(100), release_title varchar(100), credit varchar(100), artist varchar(100), anv varchar(100), label varchar(100), genre varchar(100), style varchar(100), country varchar(100), year varchar(100), format varchar (100), catno varchar(100), barcode varchar(100), track varchar (300), submitter varchar(100), contributor varchar (100));
+CREATE TABLE vinyls ( img varchar (100), type varchar(100), title varchar(100), release_title varchar(100), credit varchar(100), artist varchar(100), anv varchar(100), label varchar(100), genre varchar(100), style varchar(100), country varchar(100), year int, format varchar (100), catno varchar(100), barcode varchar(100), track varchar (500), submitter varchar(100), contributor varchar (100), id SERIAL);
 
 INSERT INTO vinyls ( img,  type, title, release_title, credit, artist, anv, label, genre, style, country, year, format, catno, barcode, track, submitter, contributor ) VALUES ( 'https://i.imgur.com/Khvif7O.jpg',  'release', 'Nine Inch Nails - With Teeth', 'With Teeth', 'Trent Reznor & others', 'Nine Inch Nails', 'NIN', 'Nothing Records, Interscope Records', 'Electronic, Rock', 'Alternative Rock, Industrial', 'United States', '2005', 'CD, Album, Digipak', 'B0004553-01', '602498813546', 'All The Love in the World, You Know What You Are?, The Collector, The Hand That Feeds, Love Is Not Enough, Every Day Is Exactly The Same, WIth Teeth, Only, Getting Smaller, Sunspots, The Line Begins to Blur, Beside You In Time, Right Where It Belongs', 'Molly', 'Molly');
 

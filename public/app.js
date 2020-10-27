@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 class Vinyl extends React.Component {
     constructor(props) {
         super(props);
@@ -56,36 +58,88 @@ class Vinyl extends React.Component {
     }
 
         render = () => {
-        const { error, isLoaded, vinyls } = this.state;
+          const { error, isLoaded, vinyls } = this.state;
          if (error) {
           return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
-          return <div>Loading...</div>;
-        } else {
-          return (
+          return <div>Loading...</div>
+        }
+      }
+    }
+
+class Picks extends React.Component {
+  constructor(props) {
+    super(props);
+    state = {
+    vinyls: response.data
+    }
+  }
+    render = () => { 
+        return (
+            <div>
+              <h2>Staff Picks</h2>
             <ul>
               {vinyls.map(vinyls => (
                 <li key={response}>
                   <img src="{vinyls.img}"/> {vinyls.type} {vinyls.title} {vinyls.release_title} {vinyls.credit} {vinyls.artist} {vinyls.any} {vinyls.label} {vinyls.genre} {vinyls.style} {vinyls.country} {vinyls.year} {vinyls.format} {vinyls.catno} {vinyls.barcode} {vinyls.track} {vinyls.submitter} {vinyls.contributor}
                 </li>
-              ))}
-            </ul>
-            
-          );
+              ),
+              )
+              }
+              </ul>
+              </div>
+          )
+            }
+            }
+              
     
-        }
-      }
-    }
+        
+
+      
+    
 
 class Header extends React.Component {
     render = () => {
         return(
          <div>
-            <div className="header">
+            <div className="header-1">
             </div> 
             </div>
         )
       }
+}
+
+class SearchForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    (this.state.value);
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <div className="container">
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Search:
+          <input className="input" type="text" value={this.state.value} onChange={this.handleChange} />
+        </label>
+        <input className="button" type="submit" value="Submit" />
+      </form>
+      </div>
+    );
+  }
 }
 
 class App extends React.Component {
@@ -180,14 +234,16 @@ class App extends React.Component {
         )
     }
     render = () => {
-      return(
-        <div className="header">
-        </div> 
+      return(<div>
+        <Header></Header>
+        <SearchForm></SearchForm>
+        <Picks></Picks>
+        <Vinyl></Vinyl>        
+        </div>
       )
     }
 }
-
-    
+ 
         
 
 ReactDOM.render(

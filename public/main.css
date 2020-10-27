@@ -1,10 +1,38 @@
 body {
-    background-color: #F4F1DE;
+    background-color: #e07a5f;
+    text-align: center;
 }
 
-.header {
+.header-1 {
     background-image: url("https://i.imgur.com/ciUW5aN.png");
-    float: left;
     background-size: auto;
-    margin: 0;
+    height: 510px;
+    width: 510px;
+    margin: 0 auto;
+}
+
+input[type=text]:focus {
+    border: 2px solid #81b29a;
+    border-radius: 10px;
+}
+
+input[type=text] {
+    border-radius: 10px;
+    display: block;
+}
+
+.button {
+    background-color: #f2cc8f;
+    margin: 0.5em;
+    border: none;
+}
+
+.button:hover {
+    background-color: #3d405b;
+    color: #f5f5ef;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
 }
