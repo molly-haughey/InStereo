@@ -81,7 +81,7 @@ class Vinyl extends React.Component {
               
         }
       }
-            
+  
           
         
     
@@ -91,25 +91,45 @@ class Picks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isVisible: {vinyls.id[1]} = false,
       vinyls: [],
     }
+    this.handleToggle = this.handleToggle.bind(this)
   }
   componentDidMount() {
     fetch('/vinyls')
       .then(response => response.json())
       .then(vinyls => this.setState({vinyls}))
   }
+
+  handleToggle(e) {
+    this.setState({ isVisible: !this.state.isVisible});
+  };
   
     render = () => { 
+      const isVisible = this.state.isVisible;
         return (
             <div>
               <h1>Staff Picks</h1>
             <div>
               {this.state.vinyls.map((vinyl) => {
                 return (
-                <div>
-                  <img src={vinyl.img}/><br/>Vinyl Type: {vinyl.type} <br/> Release Title: {vinyl.title} <br/> Album Title: {vinyl.release_title} <br/>Credits: {vinyl.credit} <br/> Artist: {vinyl.artist} <br/> Alternate Artist Names: {vinyl.anv} <br/> Label: {vinyl.label} <br/> Genre: {vinyl.genre} <br/> Style: {vinyl.style} <br/> Country: {vinyl.country} <br/> Year: {vinyl.year} <br/> Format: {vinyl.format} <br/> Catno: {vinyl.catno} <br/> Barcode: {vinyl.barcode} <br/> Tracks: {vinyl.track} <br/> Submitter: {vinyl.submitter} <br/> Contributor: {vinyl.contributor}
+                  <div className="card">
+                  <div className="card-image">
+                    <figure className="image is-4by3">
+                  <img className="is-clickable" src={vinyl.img} onClick={this.handleToggle}/><br/></figure>
+                  <div className="card-content">
+                    <div className="content">
+                    <b> {vinyl.title}</b> <br/> 
+                      <div className={isVisible ? null : "is-hidden"}>
+              
+                      <b>Vinyl Type:</b> {vinyl.type} <br/> <b>Album Title:</b> {vinyl.release_title} <br/><b>Credits:</b> {vinyl.credit} <br/> <b>Artist:</b> {vinyl.artist} <br/> <b>Alternate Artist Names: </b> {vinyl.anv} <br/> <b>Label:</b> {vinyl.label} <br/> <b>Genre:</b> {vinyl.genre} <br/> <b>Style:</b> {vinyl.style} <br/> <b>Country:</b> {vinyl.country} <br/> <b>Year:</b> {vinyl.year} <br/> <b>Format:</b> {vinyl.format} <br/> <b>Catno:</b> {vinyl.catno} <br/> <b>Barcode:</b> {vinyl.barcode} <br/> <b>Tracks:</b> {vinyl.track} <br/> <b>Submitter:</b> {vinyl.submitter} <br/> <b>Contributor:</b> {vinyl.contributor}
+                      </div>
+                      </div>
+                      </div>
               </div>
+              </div>
+  
                 )
               }
               )
@@ -120,6 +140,7 @@ class Picks extends React.Component {
           )
             }
             }
+
               
 // class Login extends React.Component {
 //   HasAccessToRouter = () => {
