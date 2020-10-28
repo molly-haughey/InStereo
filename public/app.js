@@ -91,7 +91,7 @@ class Picks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isVisible: {vinyls.id[1]} = false,
+      isVisible: false,
       vinyls: [],
     }
     this.handleToggle = this.handleToggle.bind(this)
@@ -102,7 +102,7 @@ class Picks extends React.Component {
       .then(vinyls => this.setState({vinyls}))
   }
 
-  handleToggle(e) {
+  handleToggle() {
     this.setState({ isVisible: !this.state.isVisible});
   };
   
