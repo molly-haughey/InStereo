@@ -1,4 +1,18 @@
 // note: nirvana is hard-coded into fetch
+import React from "react"
+import { Switch } from "react-router-dom"
+import { Navbar } from "./components/Navbar"
+
+function App() {
+  return (
+    <div className='App'>
+      <Navbar />
+      <Switch>
+      <Route exact path='/' component={Products} />
+      </Switch>
+    </div>
+  )
+}
 
 class Vinyl extends React.Component {
     constructor(props) {
@@ -124,6 +138,8 @@ class Picks extends React.Component {
                       <div className={isVisible ? null : "is-hidden"}>
               
                       <b>Vinyl Type:</b> {vinyl.type} <br/> <b>Album Title:</b> {vinyl.release_title} <br/><b>Credits:</b> {vinyl.credit} <br/> <b>Artist:</b> {vinyl.artist} <br/> <b>Alternate Artist Names: </b> {vinyl.anv} <br/> <b>Label:</b> {vinyl.label} <br/> <b>Genre:</b> {vinyl.genre} <br/> <b>Style:</b> {vinyl.style} <br/> <b>Country:</b> {vinyl.country} <br/> <b>Year:</b> {vinyl.year} <br/> <b>Format:</b> {vinyl.format} <br/> <b>Catno:</b> {vinyl.catno} <br/> <b>Barcode:</b> {vinyl.barcode} <br/> <b>Tracks:</b> {vinyl.track} <br/> <b>Submitter:</b> {vinyl.submitter} <br/> <b>Contributor:</b> {vinyl.contributor}
+                      <br/>
+                      <button className="button">Add to Cart</button>
                       </div>
                       </div>
                       </div>
@@ -277,3 +293,5 @@ ReactDOM.render(
     <App></App>,
     document.querySelector('main')
 )
+
+export default App

@@ -7,6 +7,8 @@ app.use(express.static('public'))
 
 const vinylsController = require('./controllers/vinyls.js');
 app.use('/vinyls', vinylsController);
+const cartController = require('./controllers/cart.js');
+app.use('/cart', cartController);
 
 postgres.connect();
 
