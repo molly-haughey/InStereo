@@ -22,9 +22,9 @@ router.get('/cart', (req, res) => {
             res.json(results.rows)
         })
     
-        console.log(res);
-        fetchCart();
-        alert("Item Incremented");
+        // console.log(res);
+        // fetchCart();
+        // alert("Item Incremented");
     })
     
           
@@ -35,3 +35,5 @@ router.get('/cart', (req, res) => {
       props.history.push("/");
   
   })
+
+  module.exports = router;

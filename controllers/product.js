@@ -13,8 +13,10 @@ router.get('product', (req, res) => {
       });
   })
 
-  router.post('/cart', (req, res) => {
-    postgres.query('SELECT id FROM vinyls;', (err, results) => {
-        res.json(results.rows)
-    })
-})
+//   router.post('/cart', (req, res) => {
+//     postgres.query('SELECT id FROM vinyls;', (err, results) => {
+//         res.json(results.rows)
+//     })
+// })
+
+module.exports = router;
