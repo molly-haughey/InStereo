@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    postgres.query(`INSERT INTO vinyls ( img, type, title, release_title, credit, artist, anv, label, genre, style, country, year, format, catno, barcode, track, submitter, contributor ) VALUES ('${req.body.img}', ${req.body.type}, ${req.body.title}, ${req.body.release_title}, ${req.body.credit}, ${req.body.artist}, ${req.body.anv}, ${req.body.label}, ${req.body.genre}, ${req.body.style}, ${req.body.country}, ${req.body.year}, ${req.body.format}, ${req.body.catno}, ${req.body.barcode}, ${req.body.track}, ${req.body.submitter}, ${req.body.contributor}')` , (err, results) => {
+    postgres.query(`INSERT INTO vinyls ( img, type, title, release_title, credit, artist, anv, label, genre, style, country, year, format, catno, barcode, track, submitter, contributor) VALUES ('${req.body.img}', ${req.body.type}, ${req.body.title}, ${req.body.release_title}, ${req.body.credit}, ${req.body.artist}, ${req.body.anv}, ${req.body.label}, ${req.body.genre}, ${req.body.style}, ${req.body.country}, ${parseInt(req.body.year)}, ${req.body.format}, ${req.body.catno}, ${req.body.barcode}, ${req.body.track}, ${req.body.submitter}, ${req.body.contributor})` , (err, results) => {
         postgres.query('SELECT * FROM vinyls ORDER BY id ASC;', (err, results) => {
             res.json(results.rows)
         });
