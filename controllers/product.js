@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const postgres = require('../postgres.js');
 
-router.get('product', (req, res) => {
+router.get('/product', (req, res) => {
       res.json()
       .then((res) => {
         console.log(res.data);
