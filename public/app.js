@@ -18,7 +18,8 @@ class Vinyl extends React.Component {
         this.setState({
           input: event.target.value
         }) 
-        console.log(event)    
+        console.log(event)
+        console.log('at submit')    
         event.preventDefault()
         axios
         
@@ -102,35 +103,44 @@ class Picks extends React.Component {
       .then(vinyls => this.setState({vinyls}))
   }
 
-  handleToggle(e) {
-    this.setState({ isVisible: !this.state.isVisible,
-    id: e.target.value});
+  handleToggle(VinylDescriptionId) {
+    //console.log('e of handle toggle', e);
+    //console.log(this);
+    //this.setState({ isVisible: !this.state.isVisible,
+    //id: e.target.value});
+    //id: 
+    const description = document.getElementById(VinylDescriptionId)
+    description.classList.remove('is-hidden')
   };
   
     render = () => { 
-      const isVisible = this.state.isVisible;
+      //const isVisible = this.state.isVisible;
         return (
             <div>
-              <h1>Staff Picks</h1>
+              <h1>Staff Picks</h1> 
             <div>
               {this.state.vinyls.map((vinyl) => {
                 return (
                   <div className="card">
-                  <div className="card-image">
-                    <figure className="image is-4by3">
-                  <img value={this.state.id} className="is-clickable" src={vinyl.img} onClick={this.handleToggle}/><br/></figure>
-                  <div className="card-content">
-                    <div className="content">
-                    <b> {vinyl.title}</b> <br/> 
-                      <div className={isVisible ? null : "is-hidden"}>
-              
-                      <b>Vinyl Type:</b> {vinyl.type} <br/> <b>Album Title:</b> {vinyl.release_title} <br/><b>Credits:</b> {vinyl.credit} <br/> <b>Artist:</b> {vinyl.artist} <br/> <b>Alternate Artist Names: </b> {vinyl.anv} <br/> <b>Label:</b> {vinyl.label} <br/> <b>Genre:</b> {vinyl.genre} <br/> <b>Style:</b> {vinyl.style} <br/> <b>Country:</b> {vinyl.country} <br/> <b>Year:</b> {vinyl.year} <br/> <b>Format:</b> {vinyl.format} <br/> <b>Catno:</b> {vinyl.catno} <br/> <b>Barcode:</b> {vinyl.barcode} <br/> <b>Tracks:</b> {vinyl.track} <br/> <b>Submitter:</b> {vinyl.submitter} <br/> <b>Contributor:</b> {vinyl.contributor}
-                      </div>
-                      </div>
-                      </div>
-              </div>
-              </div>
-  
+                    <div className="card-image">
+                      <figure className="image is-4by3">
+                      
+                      <button onClick={e => this.handleToggle(vinyl.anv)}>
+                        <img value={this.state.id} className="is-clickable" src={vinyl.img}/>
+                      </button>
+                      
+                      <br/></figure>
+                      <div className="card-content">
+                        <div className="content">
+                          <b> {vinyl.title}</b> <br/> 
+                          <div id={vinyl.anv} className="is-hidden">
+                
+                            <b>Vinyl Type:</b> {vinyl.type} <br/> <b>Album Title:</b> {vinyl.release_title} <br/><b>Credits:</b> {vinyl.credit} <br/> <b>Artist:</b> {vinyl.artist} <br/> <b>Alternate Artist Names: </b> {vinyl.anv} <br/> <b>Label:</b> {vinyl.label} <br/> <b>Genre:</b> {vinyl.genre} <br/> <b>Style:</b> {vinyl.style} <br/> <b>Country:</b> {vinyl.country} <br/> <b>Year:</b> {vinyl.year} <br/> <b>Format:</b> {vinyl.format} <br/> <b>Catno:</b> {vinyl.catno} <br/> <b>Barcode:</b> {vinyl.barcode} <br/> <b>Tracks:</b> {vinyl.track} <br/> <b>Price:</b> ${vinyl.price}
+                          </div>
+                        </div>
+                     </div>
+                    </div>
+                  </div>  
                 )
               }
               )
