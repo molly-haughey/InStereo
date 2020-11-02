@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/molly-haughey/InStereo/blob/main/README.md",
   "dependencies": {
+    "@creativebulma/bulma-collapsible": "^1.0.4",
+    "bulma-accordion": "^2.0.1",
     "express": "^4.17.1",
     "pg": "^8.3.2"
   }

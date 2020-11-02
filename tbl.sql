@@ -12,5 +12,5 @@ VALUES ( 'https://i.imgur.com/wk8aWu2.jpg','release', 'The Dandy Warhols - The D
 INSERT INTO vinyls ( img,  type, title, release_title, credit, artist, anv, label, genre, style, country, year, format, catno, barcode, track, price )
 VALUES ( 'https://i.imgur.com/bY7FRcj.jpg', 'release', 'The Cure - Disintegration', 'Disintegration', 'Robert Smith and others', 'The Cure', 'The Cure', 'Fiction Records', 'Electronic, Rock', 'New Wave, Alternative Rock', 'United Kingdom', '1989', 'LP, Album, CD', 'FIXH 14, 839 353-1', '0 42283 93531 0', 'Plainsong, Pictures of You, Closedown, Love Song, Lullaby, Fascination Street, Prayers for Rain, The Same Deep Water As You, Disintegration, Untitled', '21');
 
-INSERT INTO vinyls ( img,  type, title, release_title, credit, artist, anv, label, genre, style, country, year, format, catno, barcode, track, submitter, contributor )
-VALUES ( 'https://i.imgur.com/Ucw9GXt.jpg', )
+INSERT INTO vinyls ( img,  type, title, release_title, credit, artist, anv, label, genre, style, country, year, format, catno, barcode, track, price )
+VALUES ( 'https://i.imgur.com/Ucw9GXt.jpg', 'release', 'Massive Attack - Mezzanine', 'Mezzanine', 'Robert Del Naja and others', 'Massive Attack', 'Massive Attack', 'Circa, Virgin', 'Electronic', 'Leftfield, Trip-Hop, Downtempo', 'Europe', '1998', 'LP, Album, CD', 'WBRLP4, 7243 8 45599 1 5', '7 24384 55991 5', 'Angel, Risingson, Teardrop, Inertia Creeps, Exchange, Dissolved Girl, Man Next Door, Black Milk, Mezzanine, Group Four, (Exchange)', '23');

@@ -75,3 +75,13 @@ h1 {
   transition: opacity 300ms ease-in-out;
   color: #4a4a4a;
 }
+
+.requests {
+    display: flex;
+    justify-content: center;
+}
+
+.requesting {
+    background-color: #81b29a;
+    margin: 0em;
+}
