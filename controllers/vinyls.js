@@ -29,7 +29,8 @@ router.delete('/:id', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-    postgres.query(`UPDATE people SET img = '${req.body.img}', type = '${req.body.type}', title = '${req.body.title}', release_title = '${req.body.release_title}', credit = '${req.body.credit}', artist = '${req.body.artist}', anv = '${req.body.anv}', label = '${req.body.label}', genre = '${req.body.genre}', style = '${req.body.style}', country = '${req.body.country}', year = ${parseInt(req.body.year)}, format = '${req.body.format}', catno = '${req.body.catno}', barcode = '${req.body.barcode}', track = '${req.body.track}', price = '${req.body.price}' WHERE id = ${req.params.id}`, (err, results) => {
+    console.log(req.params.id + "here")
+    postgres.query(`UPDATE vinyls SET img = '${req.body.img}', type = '${req.body.type}', title = '${req.body.title}', release_title = '${req.body.release_title}', credit = '${req.body.credit}', artist = '${req.body.artist}', anv = '${req.body.anv}', label = '${req.body.label}', genre = '${req.body.genre}', style = '${req.body.style}', country = '${req.body.country}', year = ${parseInt(req.body.year)}, format = '${req.body.format}', catno = '${req.body.catno}', barcode = '${req.body.barcode}', track = '${req.body.track}', price = ${parseInt(req.body.price)} WHERE id = ${req.params.id}`, (err, results) => {
         postgres.query('SELECT * FROM vinyls ORDER BY id ASC;', (err, results) => {
             res.json(results.rows)
         });

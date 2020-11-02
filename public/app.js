@@ -503,7 +503,7 @@ class Picks extends React.Component {
                             <b>Vinyl Type:</b> {vinyl.type} <br/> <b>Album Title:</b> {vinyl.release_title} <br/><b>Credits:</b> {vinyl.credit} <br/> <b>Artist:</b> {vinyl.artist} <br/> <b>Alternate Artist Names: </b> {vinyl.anv} <br/> <b>Label:</b> {vinyl.label} <br/> <b>Genre:</b> {vinyl.genre} <br/> <b>Style:</b> {vinyl.style} <br/> <b>Country:</b> {vinyl.country} <br/> <b>Year:</b> {vinyl.year} <br/> <b>Format:</b> {vinyl.format} <br/> <b>Catno:</b> {vinyl.catno} <br/> <b>Barcode:</b> {vinyl.barcode} <br/> <b>Tracks:</b> {vinyl.track} <br/> <b>Price:</b> ${vinyl.price}<br/>
 
                             <CartButton serialNumber={vinyl.id} title={vinyl.title} price={vinyl.price}></CartButton>
-
+                          <div className="requests">
                             <details><summary>Edit this vinyl</summary>
                               <form onSubmit={this.updateVinyl} id={vinyl.id}>
                                   <label htmlFor="img">Image</label>
@@ -574,10 +574,10 @@ class Picks extends React.Component {
                                   <br />
                                   <input type="text" id="price" onChange={this.handlePrice} />
                                   <br />
-                                  <input type="submit" value="Update Vinyl" />
+                                  <input type="submit" className="button" value="Update Vinyl" />
                               </form>
                             </details>                          
-
+                          </div>
                           </div>
                         </div>
                      </div>

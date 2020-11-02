@@ -14,3 +14,6 @@ VALUES ( 'https://i.imgur.com/bY7FRcj.jpg', 'release', 'The Cure - Disintegratio
 
 INSERT INTO vinyls ( img,  type, title, release_title, credit, artist, anv, label, genre, style, country, year, format, catno, barcode, track, price )
 VALUES ( 'https://i.imgur.com/Ucw9GXt.jpg', 'release', 'Massive Attack - Mezzanine', 'Mezzanine', 'Robert Del Naja and others', 'Massive Attack', 'Massive Attack', 'Circa, Virgin', 'Electronic', 'Leftfield, Trip-Hop, Downtempo', 'Europe', '1998', 'LP, Album, CD', 'WBRLP4, 7243 8 45599 1 5', '7 24384 55991 5', 'Angel, Risingson, Teardrop, Inertia Creeps, Exchange, Dissolved Girl, Man Next Door, Black Milk, Mezzanine, Group Four, (Exchange)', '23');
+
+INSERT INTO vinyls ( img,  type, title, release_title, credit, artist, anv, label, genre, style, country, year, format, catno, barcode, track, price )
+VALUES ( 'https://i.imgur.com/7Vf0lHh.jpg', 'release', 'Pinback - Summer in Abaddon', 'Summer in Abaddon', 'Roger Seibel, Armistead Burwell Smith IV, Rob Crow', 'Pinback', 'Pinback', 'Touch and Go', 'Rock', 'Indie Rock', 'United States', '2004', 'Vinyl, LP, Album', 'TG237CD', '0 36172 09371 7', 'Non Photo-Blue, Sender, Syracuse, Bloods on Fire, Fortress, This Red Book, Soaked, 3x0, The Yellow Ones, AFK', '19' );
