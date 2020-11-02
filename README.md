@@ -40,3 +40,17 @@ Trello: Task-tracking interface
 8. Got cart working.
 
 9. Got Buy Button (a.k.a. delete) working.
+
+10. Got post route working.
+
+11. Got edit route working.
+
+12. Collapsed items.
+
+13. Final styling.
+
+# Unsolved problems
+
+Never got user auth or the search API to function. I also tried React CRA but had trouble with my routes.
+
+
