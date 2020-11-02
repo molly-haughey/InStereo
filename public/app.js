@@ -660,6 +660,18 @@ class Header extends React.Component {
       }
 }
 
+class Footer extends React.Component {
+  render = () => {
+    return(
+    <div className ="footer">
+      <b>© Molly Haughey</b><br/>
+      Acknowledgements:<br/>
+      Thanks to Nat R., Will P., and Jim for helping me iron out the kinks in this project when instructors weren't around during weekends.<br/>
+      Thanks to Jerrica, Aegean, and Michael for your help.
+    </div>
+    )
+  }
+}
 
 class App extends React.Component {
         state = {
@@ -683,7 +695,8 @@ class App extends React.Component {
         <ModalContainer></ModalContainer>
         <Header></Header>
         <Requests></Requests> 
-        <Picks></Picks>             
+        <Picks></Picks>
+        <Footer></Footer>             
         </div>
       )
     }
