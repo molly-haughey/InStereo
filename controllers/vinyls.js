@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     console.log(req.body)
-    postgres.query(`INSERT INTO vinyls ( img, type, title, release_title, credit, artist, anv, label, genre, style, country, year, format, catno, barcode, track, submitter, contributor) VALUES ('${req.body.img}', '${req.body.type}', '${req.body.title}', '${req.body.release_title}', '${req.body.credit}', '${req.body.artist}', '${req.body.anv}', '${req.body.label}', '${req.body.genre}', '${req.body.style}', '${req.body.country}', ${parseInt(req.body.year)}, '${req.body.format}', '${req.body.catno}', '${req.body.barcode}', '${req.body.track}', '${req.body.price}')` , (err, results) => {
+    postgres.query(`INSERT INTO vinyls ( img, type, title, release_title, credit, artist, anv, label, genre, style, country, year, format, catno, barcode, track, price ) VALUES ('${req.body.img}', '${req.body.type}', '${req.body.title}', '${req.body.release_title}', '${req.body.credit}', '${req.body.artist}', '${req.body.anv}', '${req.body.label}', '${req.body.genre}', '${req.body.style}', '${req.body.country}', '${parseInt(req.body.year)}', '${req.body.format}', '${req.body.catno}', '${req.body.barcode}', '${req.body.track}', '${parseInt(req.body.price)}')` , (err, results) => {
         if (err) {
             res.json(err)
         }
