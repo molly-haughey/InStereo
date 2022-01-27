@@ -666,7 +666,6 @@ class Footer extends React.Component {
     <div className ="footer">
       <b>© Molly Haughey</b><br/>
       Acknowledgements:<br/>
-      Thanks to Nat R., Will P., and Jim for helping me iron out the kinks in this project when instructors weren't around during weekends.<br/>
       Thanks to Jerrica, Aegean, and Michael for your help.
     </div>
     )
